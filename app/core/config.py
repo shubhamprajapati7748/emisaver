@@ -1,7 +1,7 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import Field
 
-class Settings:
+class Settings(BaseSettings):
     """
     Pydantic Settings for the application
 
@@ -46,7 +46,7 @@ class Settings:
         description="Database port"
     )
     POSTGRES_USER : str = Field(
-        default="postgres",
+        default="shubhamp",
         description="Database user"
     )
     POSTGRES_PASSWORD : str = Field(
@@ -58,10 +58,10 @@ class Settings:
         description="Database name"
     )
     
-    SQLALCHEMY_DATABASE_URL : str = Field(
-        default=f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}",
-        description="Database URL"
-    )
+    @property
+    def SQLALCHEMY_DATABASE_URL(self) -> str:
+        """Construct the database URL from individual components."""
+        return f"postgresql://{self.POSTGRES_USER}:{self.POSTGRES_PASSWORD}@{self.POSTGRES_HOST}:{str(self.POSTGRES_PORT)}/{self.POSTGRES_DB}"
 
     # MCP settings 
     MCP_SERVERS_FILE : str = "mcp-servers.json"
@@ -80,6 +80,7 @@ class Settings:
         env_file = ".env",
         env_file_encoding = "utf-8",
         case_sensitive = False,
+        extra = "ignore"
     )
 
 settings = Settings()

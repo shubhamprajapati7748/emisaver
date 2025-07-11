@@ -7,6 +7,7 @@ if TYPE_CHECKING:
     from app.database.models.bank_account import BankAccount
     from app.database.models.loan import Loan
     from app.database.models.investment import Investment
+    from app.database.models.swith_request import SwitchRequest
 
 class User(Base):
     __tablename__ = "users"
@@ -25,3 +26,4 @@ class User(Base):
     bank_accounts : Mapped[list["BankAccount"]] = relationship("BankAccount", back_populates="user", cascade="all, delete-orphan")
     loans : Mapped[list["Loan"]] = relationship("Loan", back_populates="user", cascade="all, delete-orphan")
     investments : Mapped[list["Investment"]] = relationship("Investment", back_populates="user", cascade="all, delete-orphan")
+    switch_requests : Mapped[list["SwitchRequest"]] = relationship("SwitchRequest", back_populates="user", cascade="all, delete-orphan")
