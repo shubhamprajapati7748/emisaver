@@ -49,7 +49,7 @@ class Settings(BaseSettings):
         description="Database port"
     )
     POSTGRES_USER : str = Field(
-        default="shubhamp",
+        default="postgres",
         description="Database user"
     )
     POSTGRES_PASSWORD : str = Field(
