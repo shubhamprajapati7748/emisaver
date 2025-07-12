@@ -17,9 +17,13 @@ sqlalchemy==2.0.41
 psycopg2-binary==2.9.10
 # cloud-sql-python-connector==1.18.2
 
-# FastAPI Dependencies
+# FastAPI 
 pydantic==2.11.7
+pydantic[email]==2.11.7
 # python-multipart==0.0.20
 
 # Security
 # cryptography==45.0.3
+
+# loguru
+loguru==0.7.3

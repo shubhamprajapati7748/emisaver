@@ -15,10 +15,10 @@ class Investment(Base):
     investment_id : Mapped[str] = mapped_column(String(500), nullable=True)
     investment_type : Mapped[str] = mapped_column(String(500), nullable=True)
     institution : Mapped[str] = mapped_column(String(500), nullable=True)
-    amount_invested : Mapped[int] = mapped_column(Integer, nullable=True)
-    current_value : Mapped[int] = mapped_column(Integer, nullable=True)
-    start_date : Mapped[datetime] = mapped_column(DateTime, nullable=True)
-    maturity_date : Mapped[datetime] = mapped_column(DateTime, nullable=True)
+    amount_invested : Mapped[float] = mapped_column(Float, nullable=True)
+    current_value : Mapped[float] = mapped_column(Float, nullable=True)
+    start_date : Mapped[str] = mapped_column(String(500), nullable=True)
+    maturity_date : Mapped[str] = mapped_column(String(500), nullable=True)
     
     # Relationship
     user : Mapped["User"] = relationship("User", back_populates="investments")

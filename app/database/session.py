@@ -12,7 +12,7 @@ engine = create_engine(
     settings.SQLALCHEMY_DATABASE_URL,
     poolclass=StaticPool,
     pool_pre_ping=True,
-    echo=settings.DEBUG, # Log SQL queries in debug mode
+    # echo=settings.DEBUG, # Log SQL queries in debug mode
 )
 
 # Create session factory 

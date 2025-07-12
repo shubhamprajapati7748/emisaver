@@ -1,5 +1,8 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import Field
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class Settings(BaseSettings):
     """
@@ -64,7 +67,7 @@ class Settings(BaseSettings):
         return f"postgresql://{self.POSTGRES_USER}:{self.POSTGRES_PASSWORD}@{self.POSTGRES_HOST}:{str(self.POSTGRES_PORT)}/{self.POSTGRES_DB}"
 
     # MCP settings 
-    MCP_SERVERS_FILE : str = "mcp-servers.json"
+    MCP_SERVERS_CONFIG_FILE : str = "mcp-servers.json"
 
     # LLM settings 
     GEMINI_API_KEY : str = Field(

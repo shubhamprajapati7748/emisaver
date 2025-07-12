@@ -1,4 +1,4 @@
-from sqlalchemy import Integer, String, Boolean
+from sqlalchemy import Integer, String, Boolean, Float
 from sqlalchemy.orm import relationship, Mapped, mapped_column
 from app.database.base import Base
 from typing import TYPE_CHECKING
@@ -16,9 +16,9 @@ class User(Base):
     email : Mapped[str] = mapped_column(String(500), nullable=False, unique=True, index=True)
     phone_number : Mapped[str] = mapped_column(String(500), nullable=False, unique=True, index=True)
     cibil_score : Mapped[int] = mapped_column(Integer, nullable=True)
-    total_assets : Mapped[int] = mapped_column(Integer, nullable=True)
-    total_liabilities : Mapped[int] = mapped_column(Integer, nullable=True)
-    net_worth : Mapped[int] = mapped_column(Integer, nullable=True)
+    total_assets : Mapped[float] = mapped_column(Float, nullable=True)
+    total_liabilities : Mapped[float] = mapped_column(Float, nullable=True)
+    net_worth : Mapped[float] = mapped_column(Float, nullable=True)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
     is_superuser: Mapped[bool] = mapped_column(Boolean, default=False)
     

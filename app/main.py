@@ -6,8 +6,9 @@ from app.core.config import settings
 # from app.database.init_db import init_db
 from contextlib import asynccontextmanager
 from fastapi.responses import HTMLResponse
-from app.api.v1.endpoints import (health, users)
+from app.api.v1.endpoints import (health, users, bank_accounts, loans, investments)
 from app.mcp.fi_mcp import FiMCP
+from app.database.init_db import init_db, close_db
 
 
 # Application state management 
@@ -17,6 +18,8 @@ class ApplicationState:
     
     async def initialize(self):
         self.fi_mcp = FiMCP()
+        # Initialize database tables only, don't store session
+        init_db()
 
     async def shutdown(self):
         self.fi_mcp = None
@@ -74,6 +77,9 @@ async def show_docs_reference() -> HTMLResponse:
 
 app.include_router(health.router, prefix="/api/v1/health", tags=["health"])
 app.include_router(users.router, prefix="/api/v1/users", tags=["users"])
+# app.include_router(bank_accounts.router, prefix="/api/v1/bank-accounts", tags=["bank-accounts"])
+# app.include_router(loans.router, prefix="/api/v1/loans", tags=["loans"])
+# app.include_router(investments.router, prefix="/api/v1/investments", tags=["investments"])
 
 # app.include_router(users.router, prefix="/api/v1/users", tags=["Users"])
 # fi_mcp = FiMCP()
