@@ -145,7 +145,7 @@ class CRUDUser:
         db.refresh(db_obj)
         return db_obj
     
-    def delete(self, db: Session, *, user_id: uuid.UUID) -> User:
+    def delete(self, db: Session, *, user_id: uuid.UUID) -> bool:
         """Delete user.
         
         Args:
@@ -155,12 +155,14 @@ class CRUDUser:
 
         Returns:
         --- 
-            User : The deleted user object.
+            bool : True if the user is deleted, False otherwise.
         """
         obj = db.query(User).get(user_id)
-        db.delete(obj)
-        db.commit()
-        return obj
+        if obj:
+            db.delete(obj)
+            db.commit()
+            return True
+        return False
     
     def is_exists(self, db: Session, user_id: uuid.UUID) -> bool:
         """Checks if user exists.

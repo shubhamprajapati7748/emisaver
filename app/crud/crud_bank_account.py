@@ -65,14 +65,16 @@ class CRUDBankAccount:
         db.refresh(db_obj)
         return db_obj
     
-    def delete(self, db: Session, *, bank_account_id: uuid.UUID) -> BankAccount:
+    def delete(self, db: Session, *, bank_account_id: uuid.UUID) -> bool:
         """Delete bank account."""
         obj = db.query(BankAccount).get(bank_account_id)
-        db.delete(obj)
-        db.commit()
-        return obj
+        if obj:
+            db.delete(obj)
+            db.commit()
+            return True
+        return False
     
-    def exists(self, db: Session, bank_account_id: uuid.UUID) -> bool:
+    def is_exists(self, db: Session, bank_account_id: uuid.UUID) -> bool:
         """Check if bank account exists."""
         return db.query(BankAccount).filter(BankAccount.id == bank_account_id).first() is not None
     

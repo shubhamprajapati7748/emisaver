@@ -73,14 +73,16 @@ class CRUDLoan:
         db.refresh(db_obj)
         return db_obj
     
-    def delete(self, db: Session, *, loan_id: uuid.UUID) -> Loan:
+    def delete(self, db: Session, *, loan_id: uuid.UUID) -> bool:
         """Delete loan."""
         obj = db.query(Loan).get(loan_id)
-        db.delete(obj)
-        db.commit()
-        return obj
+        if obj:
+            db.delete(obj)
+            db.commit()
+            return True
+        return False
     
-    def exists(self, db: Session, loan_id: uuid.UUID) -> bool:
+    def is_exists(self, db: Session, loan_id: uuid.UUID) -> bool:
         """Check if loan exists."""
         return db.query(Loan).filter(Loan.id == loan_id).first() is not None
     

@@ -15,6 +15,8 @@ class User(Base):
     full_name : Mapped[str] = mapped_column(String(500), nullable=True)
     email : Mapped[str] = mapped_column(String(500), nullable=False, unique=True, index=True)
     phone_number : Mapped[str] = mapped_column(String(500), nullable=False, unique=True, index=True)
+    dob : Mapped[str] = mapped_column(String(500), nullable=True)
+    pin_code : Mapped[str] = mapped_column(String(500), nullable=True)
     cibil_score : Mapped[int] = mapped_column(Integer, nullable=True)
     total_assets : Mapped[float] = mapped_column(Float, nullable=True)
     total_liabilities : Mapped[float] = mapped_column(Float, nullable=True)
