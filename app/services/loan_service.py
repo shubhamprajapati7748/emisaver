@@ -1,11 +1,9 @@
 from typing import List, Optional, Dict, Any
-from sqlalchemy.orm import Session
 from app.crud.crud_loan import loan as crud_loan
 from app.crud.crud_user import user as crud_user
 from datetime import datetime
-import logging
-
-logger = logging.getLogger(__name__)
+from sqlalchemy.orm import Session
+from app.core.logger import logger
 
 
 class LoanService:

@@ -1,9 +1,9 @@
 """CRUD operations for user model"""
 from app.database.models.user import User 
 from sqlalchemy.orm import Session 
+from sqlalchemy import text
 from typing import Optional, Union, Dict, Any, List
 from app.schemas.user_details import UserInfo
-from app.core.exception import NotFoundException
 import uuid
 
 class CRUDUser:
@@ -17,12 +17,10 @@ class CRUDUser:
         Returns:
             User : The user object.
         
-        Raises:
-            NotFoundException : If the user with the given ID is not found.
         """
-        db_obj = db.query(User).filter(User.id == user_id).first()
+        db_obj = db.query(User).filter(User.id == user_id, User.is_active == True, User.is_superuser == False).first()
         if not db_obj:
-            raise NotFoundException(f"User with id {user_id} not found")
+            return None
         return db_obj
     
     def get_by_email(self, db: Session, email: str) -> Optional[User]:
@@ -35,12 +33,8 @@ class CRUDUser:
         Returns:
             User : The user object.
         
-        Raises: 
-            NotFoundException : If the user with the given email is not found.
         """
-        db_obj = db.query(User).filter(User.email == email).first()
-        # if not db_obj:
-        #     raise NotFoundException(f"User with email {email} not found")
+        db_obj = db.query(User).filter(User.email == email, User.is_active == True, User.is_superuser == False).first()
         return db_obj
     
     def get_by_phone(self, db: Session, phone_number: str) -> Optional[User]:
@@ -54,12 +48,8 @@ class CRUDUser:
         Returns:    
             User : The user object.
         
-        Raises: 
-            NotFoundException : If the user with the given phone number is not found.
         """
-        db_obj = db.query(User).filter(User.phone_number == phone_number).first()
-        if not db_obj:
-            raise NotFoundException(f"User with phone number {phone_number} not found")
+        db_obj = db.query(User).filter(User.phone_number == phone_number, User.is_active == True, User.is_superuser == False).first()
         return db_obj
     
     def get_multi(self, db: Session, *, skip: int = 0, limit: int = 100, filters: Optional[Dict[str, Any]] = None) -> List[User]:
@@ -178,4 +168,41 @@ class CRUDUser:
         """
         return db.query(User).filter(User.id == user_id).first() is not None
     
+    def get_by_query(self, db: Session, query: str) -> Optional[Dict[str, Any]]:
+        """Get user by query.
+        
+        Args:
+        --- 
+            db (Session) : The database session.
+            query (str) : The query to get the user.
+
+        Returns:
+        --- 
+            User : The user object.
+        """
+        query = query + " AND is_active = True AND is_superuser = False"
+
+        user = db.query(User).filter(text(query)).first()
+        if user:
+            return user.to_dict()
+        return None
+    
+    def get_user_with_relationships(self, db: Session, user_id: int) -> Optional[User]:
+        """Get user with all related data (bank accounts, loans, investments).
+        
+        Args:
+            db (Session): The database session.
+            user_id (int): The ID of the user to get.
+
+        Returns:
+            User: The user object with relationships loaded.
+        """
+        user = db.query(User).filter(User.id == user_id).first()
+        if user:
+            # Load relationships
+            _ = user.bank_accounts
+            _ = user.loans
+            _ = user.investments
+        return user
+
 user = CRUDUser()

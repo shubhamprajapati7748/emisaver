@@ -6,7 +6,7 @@ from sqlalchemy.pool import StaticPool
 from app.core.config import settings
 from app.database.base import Base
 from app.database.models import user, bank_account, loan, investment, market_loan, swith_request
-
+from app.core.logger import logger
 # Create database engine 
 engine = create_engine(
     settings.SQLALCHEMY_DATABASE_URL,

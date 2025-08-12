@@ -31,3 +31,23 @@ class Loan(Base):
     
     # Relationship
     user : Mapped["User"] = relationship("User", back_populates="loans")
+
+    def to_dict(self):
+        return {
+            "id": str(self.id),
+            "user_id": str(self.user_id),
+            "loan_id": self.loan_id,
+            "lender": self.lender,
+            "loan_type": self.loan_type,
+            "original_amount": self.original_amount,
+            "current_balance": self.current_balance,
+            "interest_rate": self.interest_rate,
+            "tenure_months": self.tenure_months,
+            "emi_amount": self.emi_amount,
+            "status": self.status,
+            "open_date": self.open_date,
+            "due_date": self.due_date,
+            "account_number": self.account_number,
+            "collateral_value": self.collateral_value,
+            "prepayment_penalty": self.prepayment_penalty,
+        }

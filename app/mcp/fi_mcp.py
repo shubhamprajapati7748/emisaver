@@ -3,7 +3,7 @@ from mcp_use import MCPAgent
 from mcp_use.client import MCPClient
 from langchain_core.output_parsers import JsonOutputParser
 from app.schemas.user_details import UserInfo
-from loguru import logger
+from app.core.logger import logger
 from dotenv import load_dotenv
 from app.prompts.user_details import FETCH_USER_DETAILS_SYSTEM_PROMPT
 from app.adk.llm import gemini_llm

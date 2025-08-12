@@ -1,0 +1,505 @@
+{
+  "eval_set_id": "apply_new_loan_eval_set",
+  "name": "apply_new_loan_eval_set",
+  "description": null,
+  "eval_cases": [
+    {
+      "eval_id": "case2deb5c",
+      "conversation": [
+        {
+          "invocation_id": "e-c2638df8-39f1-4ba3-a34a-25b8e6a5380c",
+          "user_content": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_call": null,
+                "function_response": null,
+                "text": "Hi"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_call": null,
+                "function_response": null,
+                "text": "Hi! I'm Miss Sahi from **SahiLoan**. I can help you with:\n\n💰 **1. New Personal Loans** at best rates  \n🔄 **2. Refinance / Switch** existing loans  \n❓ **3. Loan / EMI** Queries\n\nSelect the option you want to proceed with."
+              }
+            ],
+            "role": null
+          },
+          "intermediate_data": {
+            "tool_uses": [],
+            "intermediate_responses": []
+          },
+          "creation_timestamp": 1754136581.110605
+        },
+        {
+          "invocation_id": "e-e4f40ad0-13e4-4d0c-a741-8a4dd16b1cfc",
+          "user_content": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_call": null,
+                "function_response": null,
+                "text": "apply for new loan"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_call": null,
+                "function_response": null,
+                "text": "Please provide your 10-digit mobile number to proceed."
+              }
+            ],
+            "role": null
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "id": "adk-20bc56ee-7d56-4198-91fc-fb6f56208283",
+                "args": {
+                  "agent_name": "ApplyForNewLoanAgent"
+                },
+                "name": "transfer_to_agent"
+              },
+              {
+                "id": "adk-fca15fba-113e-4075-ac74-081d4e0d9e66",
+                "args": {
+                  "agent_name": "UserDetailsAgent"
+                },
+                "name": "transfer_to_agent"
+              }
+            ],
+            "intermediate_responses": []
+          },
+          "creation_timestamp": 1754136593.971509
+        },
+        {
+          "invocation_id": "e-0b4b5b7f-8a39-4824-80bf-1213a7a2b152",
+          "user_content": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_call": null,
+                "function_response": null,
+                "text": "9876543210"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_call": null,
+                "function_response": null,
+                "text": "Great! Let's start by understanding your loan needs. What type of loan are you looking for? (Currently, we offer Personal loans)"
+              }
+            ],
+            "role": null
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "id": "adk-8af410e5-839f-4105-9f7c-35f8f090f81a",
+                "args": {
+                  "phone_number": "9876543210"
+                },
+                "name": "get_user_details_tool"
+              },
+              {
+                "id": "adk-5061bfc0-5390-4e1e-91a1-8031f1123f1e",
+                "args": {
+                  "agent_name": "SahiLoanAgent"
+                },
+                "name": "transfer_to_agent"
+              },
+              {
+                "id": "adk-aeaf1b7e-0ff3-48b4-808a-afafd0036c52",
+                "args": {
+                  "agent_name": "ApplyForNewLoanAgent"
+                },
+                "name": "transfer_to_agent"
+              }
+            ],
+            "intermediate_responses": []
+          },
+          "creation_timestamp": 1754136612.183329
+        },
+        {
+          "invocation_id": "e-7a5267f8-14b0-4ff4-8175-016e13cac920",
+          "user_content": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_call": null,
+                "function_response": null,
+                "text": "Personal loan"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_call": null,
+                "function_response": null,
+                "text": "Perfect! How much much money do you need? Please tell me the amount in rupees (e.g., 100000, 200000, etc.)"
+              }
+            ],
+            "role": null
+          },
+          "intermediate_data": {2
+            "tool_uses": [],
+            "intermediate_responses": []
+          },
+          "creation_timestamp": 1754136643.520756
+        },
+        {
+          "invocation_id": "e-66f6c0da-f182-4619-96ec-92ab1e3c96ef",
+          "user_content": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_call": null,
+                "function_response": null,
+                "text": "200000"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_call": null,
+                "function_response": null,
+                "text": "Got it! For how many years would you like to take this loan? (e.g., 1 year, 2 years, etc.)"
+              }
+            ],
+            "role": null
+          },
+          "intermediate_data": {
+            "tool_uses": [],
+            "intermediate_responses": []
+          },
+          "creation_timestamp": 1754136656.020334
+        },
+        {
+          "invocation_id": "e-7142862c-965a-4ba8-82e1-43933817f0b9",
+          "user_content": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_call": null,
+                "function_response": null,
+                "text": "2 years"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_call": null,
+                "function_response": null,
+                "text": "What interest rate are you comfortable with? Please mention the percentage (e.g., 9%, 10.5%, etc.)"
+              }
+            ],
+            "role": null
+          },
+          "intermediate_data": {
+            "tool_uses": [],
+            "intermediate_responses": []
+          },
+          "creation_timestamp": 1754136670.987338
+        },
+        {
+          "invocation_id": "e-6f8c4b58-f18c-4d5a-b0a6-e860a6b5eb27",
+          "user_content": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_call": null,
+                "function_response": null,
+                "text": "10"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_call": null,
+                "function_response": null,
+                "text": "📊 **Based on your profile (CIBIL: 750), here are the best loan offers:**\n\n🥇 **1️⃣ SBI - 9.8%**\n   💰 Loan Amount: ₹24000 - ₹2000000\n   📅 Tenure: Up to 6 years\n   💸 Processing Fee: 1.5%\n   ⭐ Special: low-interest, pre-approved, No prepayment penalty after 3 yrs, SBI account holders only\n\n💡 Reply with number (1) to proceed."
+              }
+            ],
+            "role": null
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "id": "adk-bc0c06a6-51d4-4f5c-8e93-f842df920c0f",
+                "args": {
+                  "interest_rate": 10,
+                  "loan_type": "Personal",
+                  "amount": 200000,
+                  "tenure": 2
+                },
+                "name": "get_available_market_loans_tool"
+              }
+            ],
+            "intermediate_responses": []
+          },
+          "creation_timestamp": 1754136682.083542
+        },
+        {
+          "invocation_id": "e-0c288235-79ab-4e15-9de0-235a2c132a34",
+          "user_content": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_call": null,
+                "function_response": null,
+                "text": "yes apply fo it"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_call": null,
+                "function_response": null,
+                "text": "✅ **Loan Application Submitted Successfully!**\n🎯 **Selected Loan:** SBI - 9.8%\n💰 **Amount:** ₹200000\n📅 **Tenure:** 2 years\n\n📞 **Next Steps:**\nOur dedicated loan specialist team will reach out to you within 24 hours to:\n• Complete your application process\n• Collect required documents\n• Guide you through the approval process\n\n📱 **Contact:** You'll receive a call on: 9876543210\n\n🕐 **Timeline:** Application processing typically takes 1-2 business days\n\nThank you for choosing SahiLoan! 🚀"
+              }
+            ],
+            "role": null
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "id": "adk-87662a79-cb1d-4fc9-a028-1be29a8e6e8c",
+                "args": {
+                  "user_id": "550e8400-e29b-41d4-a716-446655440001",
+                  "loan_type": "Personal",
+                  "loan_id": "9f4a0e7a-7c5f-4a3e-8e6a-5f3c8d7b9a1d"
+                },
+                "name": "save_new_loan_request_tool"
+              }
+            ],
+            "intermediate_responses": []
+          },
+          "creation_timestamp": 1754136710.561753
+        },
+        {
+          "invocation_id": "e-7856ba8a-114c-4c65-815a-b16fff42536f",
+          "user_content": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_call": null,
+                "function_response": null,
+                "text": "thank you"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_call": null,
+                "function_response": null,
+                "text": "You're most welcome! Is there anything else I can assist you with today?"
+              }
+            ],
+            "role": null
+          },
+          "intermediate_data": {
+            "tool_uses": [],
+            "intermediate_responses": []
+          },
+          "creation_timestamp": 1754136725.76213
+        },
+        {
+          "invocation_id": "e-1884a660-b024-4dd0-a5da-ebdd1fa0318d",
+          "user_content": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_call": null,
+                "function_response": null,
+                "text": "Hi"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_call": null,
+                "function_response": null,
+                "text": "Hi! I'm Miss Sahi from **SahiLoan**. I can help you with:\n\n💰 **1. New Personal Loans** at best rates  \n🔄 **2. Refinance / Switch** existing loans  \n❓ **3. Loan / EMI** Queries\n\nSelect the option you want to proceed with."
+              }
+            ],
+            "role": null
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "id": "adk-7ca1f5a6-732d-441b-81cb-4e49eb04f142",
+                "args": {
+                  "agent_name": "SahiLoanAgent"
+                },
+                "name": "transfer_to_agent"
+              }
+            ],
+            "intermediate_responses": []
+          },
+          "creation_timestamp": 1754136775.491379
+        }
+      ],
+      "session_input": {
+        "app_name": "app",
+        "user_id": "user",
+        "state": {}
+      },
+      "creation_timestamp": 1754136794.524786
+    }
+  ],
+  "creation_timestamp": 1754136746.582725
+}

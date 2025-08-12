@@ -5,10 +5,9 @@ from app.crud.crud_bank_account import bank_account as crud_bank_account
 from app.crud.crud_loan import loan as crud_loan
 from app.crud.crud_investment import investment as crud_investment
 from app.schemas.user_details import UserInfo
-from app.database.session import get_db
-from app.mcp.fi_mcp import FiMCP
-from loguru import logger
+from app.core.logger import logger
 from app.schemas.response import BaseResponse
+
 
 class UserService:
     def __init__(self):
@@ -151,6 +150,27 @@ class UserService:
             logger.error(f"Error storing user info from FiMCP: {str(e)}")
             db.rollback()
             raise e
+        
+    def get_user_details_by_phone(self, db: Session, phone_number: str) -> Optional[Dict[str, Any]]:
+        """Get user details by phone number."""
+        try:
+            logger.info(f"Getting user details by phone number: {phone_number}")
+            user = self.crud_user.get_by_phone(db, phone_number)
+            if not user:
+                return None
+            return self.get_user(db, user.id)
+        
+        except Exception as e:
+            logger.error(f"Error getting user details by phone number {phone_number}: {str(e)}")
+            raise e
+        
+    def get_all_users(self, db: Session) -> List[Dict[str, Any]]:
+        """Get all users."""
+        try:
+            users = self.crud_user.get_multi(db, skip=0, limit=100, filters=None)
+            return [user.to_dict() for user in users]
+        except Exception as e:
+            logger.error(f"Error getting all users: {str(e)}")
     
     def get_user(self, db: Session, user_id: int) -> Optional[Dict[str, Any]]:
         """Get user with all related data."""
@@ -160,10 +180,10 @@ class UserService:
                 return None
             
             return {
-                "user": user,
-                "bank_accounts": user.bank_accounts,
-                "loans": user.loans,
-                "investments": user.investments
+                "user": user.to_dict(),
+                "bank_accounts": [bank_account.to_dict() for bank_account in user.bank_accounts],
+                "loans": [loan.to_dict() for loan in user.loans],
+                "investments": [investment.to_dict() for investment in user.investments]
             }
         except Exception as e:
             logger.error(f"Error getting user {user_id}: {str(e)}")

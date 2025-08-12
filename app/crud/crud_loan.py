@@ -118,6 +118,20 @@ class CRUDLoan:
     def get_high_interest_loans(self, db: Session, min_interest_rate: float = 10.0) -> List[Loan]:
         """Get loans with interest rate above threshold."""
         return db.query(Loan).filter(Loan.interest_rate > min_interest_rate).all()
+    
+    def get_by_query(self, db: Session, queryFilter: str) -> List[Loan]:
+        """Get loans by query filter.
+        
+        Args:
+            db (Session): The database session.
+            queryFilter (str): The query filter to apply.
+            
+        Returns:
+            List[Loan]: List of loans matching the query.
+        """
+        # This is a simple implementation - in production, you'd want to parse the query
+        # more carefully to avoid SQL injection
+        return db.query(Loan).filter(queryFilter).all()
 
 
 loan = CRUDLoan()

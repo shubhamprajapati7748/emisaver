@@ -22,3 +22,16 @@ class Investment(Base):
     
     # Relationship
     user : Mapped["User"] = relationship("User", back_populates="investments")
+
+    def to_dict(self):
+        return {
+            "id": str(self.id),
+            "user_id": str(self.user_id),
+            "investment_id": self.investment_id,
+            "investment_type": self.investment_type,
+            "institution": self.institution,
+            "amount_invested": self.amount_invested,
+            "current_value": self.current_value,
+            "start_date": self.start_date,
+            "maturity_date": self.maturity_date
+        }

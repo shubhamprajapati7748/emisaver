@@ -1,6 +1,6 @@
 """Initialize the database with the first superuser."""
-from loguru import logger
-from app.database.session import SessionLocal, create_tables 
+from app.core.logger import logger
+from app.database.session import SessionLocal, create_tables, drop_tables
 from app.database.models.user import User
 from sqlalchemy.orm import Session
 
@@ -9,8 +9,13 @@ def init_db():
     Initialize the database by creating tables and adding initial data.
     """
     try:
+        # Drop existing tables to ensure schema is up to date
+        # logger.info("Dropping existing database tables.")
+        # drop_tables()
+        # logger.info("Existing tables dropped successfully!")
+        
         # creates all tables
-        logger.info("creating database tables.")
+        logger.info("Creating database tables.")
         create_tables()
         logger.info("Database tables created successfully !")
 
@@ -24,8 +29,11 @@ def init_db():
                 logger.info("Creating superuser...")
                 superuser = User(
                     full_name = "Admin user",
-                    email = "admin@emisaver.com",
-                    phone_number = "+919999999999",
+                    email = "admin@SahiLoan.com",
+                    country_code = "+91",
+                    dob = "1990-01-01",
+                    pin_code = "123456",
+                    phone_number = "9999999999",
                     is_superuser = True,
                     is_active = True
                 )
@@ -34,6 +42,7 @@ def init_db():
                 logger.info("Superuser created successfully !")
         finally:
             db.close()
+
         
     except Exception as e:
         logger.error(f"Error initializing database: {e}")

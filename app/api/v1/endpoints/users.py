@@ -5,7 +5,7 @@ from app.schemas.user_details import UserInfo
 from app.api.deps import get_fi_mcp
 from app.database.session import get_db
 from app.services.user_service import user_service
-from loguru import logger
+from app.core.logger import logger
 from typing import Dict, Any
 from app.schemas.response import BaseResponse
 
